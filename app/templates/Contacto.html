@@ -1,0 +1,57 @@
+{% extends "Herencia.html" %}
+{% load static %}
+
+{% block title %}25 Urban Store - Contacto{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/Contacto.css' %}" />
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+    crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+<script src="{% static 'js/formulario.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="form-contact">
+                <h2>Contáctanos</h2>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <form id="contactForm" method="POST" action="{% url 'Contacto' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_nombre" class="form-label">Nombre</label>
+                        {{ form.nombre }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Email</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_telefono" class="form-label">Teléfono (opcional)</label>
+                        {{ form.telefono }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_mensaje" class="form-label">Mensaje</label>
+                        {{ form.mensaje }}
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

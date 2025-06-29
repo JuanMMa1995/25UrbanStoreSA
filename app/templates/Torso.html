@@ -1,0 +1,42 @@
+{% extends "Herencia.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}25 Urban Store - Torso{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/Torso.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div id="contenedorPrincipal" class="container">
+  <div id="filaProductos" class="row">
+    {% for p in polera %}
+    <div id="columna_{{ forloop.counter }}" class="col-md-4 col-lg-3 mb-4">
+      <div id="tarjeta_{{ forloop.counter }}" class="card position-relative shadow-sm">
+        {% if p.imagen %}
+        <img id="imagenProducto_{{ forloop.counter }}" src="{{ p.imagen.url }}" class="card-img-top" alt="{{ p.nombre }}">
+        {% endif %}
+        <div id="cuerpoTarjeta_{{ forloop.counter }}" class="card-body">
+          <h6 id="marcaProducto_{{ forloop.counter }}" class="text-muted mb-1">{{ p.marca | capfirst }}</h6>
+          <h5 id="nombreProducto_{{ forloop.counter }}" class="card-title">{{ p.modelo | title }}</h5>
+          <p id="precioProducto_{{ forloop.counter }}" class="text-success fw-bold fs-5 mb-1">${{ p.precio | intcomma }}
+          <h6 id="cantidadProducto_{{ forloop.counter }}" class="text-muted mb-1">Stock: {{ p.cantidad | capfirst }}</h6>
+            <span id="metodoPago_{{ forloop.counter }}" class="d-block fs-6 fw-normal text-muted">Transferencia</span>
+          </p>
+
+          <button class="btn btn-dark w-100 add-to-cart" 
+                  data-product-id="{{ p.id }}" 
+                  data-product-type="{% if 'Torso' in request.path %}Tronco{% elif 'Pantalones' in request.path %}Piernas{% elif 'Calzado' in request.path %}Zapatos{% elif 'Accesorios' in request.path %}Complemento{% endif %}">
+              🛒 Agregar al carro
+          </button>
+
+
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+/* Estilos base */
+#contenedorPrincipal {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilos de la tarjeta */
+[id^="tarjeta_"] {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+[id^="tarjeta_"]:hover {
+  transform: translateY(-5px);
+}
+
+[id^="imagenProducto_"] {
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+}
+
+[id^="cuerpoTarjeta_"] {
+  padding: 1.25rem;
+}
+
+[id^="nombreProducto_"] {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  height: 3rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+/* Estilos específicos por elemento */
+#filaProductos {
+  margin-top: 20px;
+}
+
+[id^="marcaProducto_"] {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+[id^="precioProducto_"] {
+  color: #198754;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+[id^="metodoPago_"] {
+  color: #6c757d;
+  font-size: 0.75rem;
+  font-weight: normal;
+}
+
+[id^="botonCarrito_"] {
+  background-color: #212529;
+  transition: background-color 0.3s;
+}
+
+[id^="botonCarrito_"]:hover {
+  background-color: #424649;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  [id^="columna_"] {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  [id^="columna_"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,57 @@
+{% extends "Herencia.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}25 Urban Store - Confirmación de Pago{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/Ventas/commit_pay.css' %}" />
+
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+<div class="container">
+    <div class="transaction-detail">
+        <h2>Pago {{ transaction_detail.state }}</h2>
+        
+        <div class="detail-item">
+            <span class="detail-label">Estado:</span>
+            <span>{{ transaction_detail.state }}</span>
+        </div>
+        
+        <div class="detail-item">
+            <span class="detail-label">Fecha:</span>
+            <span>{{ transaction_detail.transaction_date }}</span>
+        </div>
+        
+        <div class="detail-item">
+            <span class="detail-label">Tarjeta:</span>
+            <span>**** **** **** {{ transaction_detail.card_number }}</span>
+        </div>
+        
+        <div class="detail-item">
+            <span class="detail-label">Tipo:</span>
+            <span>{{ transaction_detail.pay_type }}</span>
+        </div>
+        
+        <div class="detail-item">
+            <span class="detail-label">Monto:</span>
+            <span>${{ transaction_detail.amount }}</span>
+        </div>
+        
+        <div class="detail-item">
+            <span class="detail-label">Código:</span>
+            <span>{{ transaction_detail.authorization_code }}</span>
+        </div>
+        
+        <div class="detail-item">
+            <span class="detail-label">Orden:</span>
+            <span>{{ transaction_detail.buy_order }}</span>
+        </div>
+        
+        <a href="{% url 'index' %}" class="btn btn-primary btn-back">Volver al inicio</a>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}

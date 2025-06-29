@@ -1,0 +1,50 @@
+/* static/style/Usuarios/Admin_User.css */
+.container {
+    max-width: 1200px;
+    margin-bottom: 50px;
+}
+
+h1 {
+    color: #333;
+    padding: 20px 0;
+    border-bottom: 2px solid #eee;
+}
+
+.table th {
+    background-color: #343a40;
+    color: white;
+}
+
+.table-responsive {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.form-check-input {
+    width: 2em;
+    height: 1em;
+    margin: 0 auto;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Estilo para los inputs en modo edición */
+.form-control {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    height: auto;
+}
+
+/* Estilo para las filas alternas */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Efecto hover para las filas */
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}

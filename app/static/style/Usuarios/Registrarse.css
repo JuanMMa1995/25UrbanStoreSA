@@ -1,0 +1,63 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fondo de la sección */
+.fondo-seccion {
+    background-color: #eee;
+}
+
+/* Estilo de la tarjeta */
+.tarjeta {
+    border-radius: 25px;
+}
+
+/* Estilo del botón de registro */
+.boton-registro {
+    background-color: #0d6efd;
+    border: none;
+    padding: 0.5rem 2rem;
+    font-weight: 600;
+}
+
+.boton-registro:hover {
+    background-color: #0b5ed7;
+}
+
+/* Estilos para los campos del formulario */
+.form-control {
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #495057;
+}
+
+/* Estilo para los iconos */
+.fa-user, .fa-envelope, .fa-lock, .fa-key {
+    color: #0d6efd;
+}
+
+/* Estilo para el checkbox */
+.form-check-input {
+    width: 1.2em;
+    height: 1.2em;
+    margin-top: 0.15em;
+}
+
+.form-check-label {
+    margin-left: 0.5em;
+}
+
+/* Estilo para el enlace de términos */
+a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

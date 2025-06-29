@@ -1,0 +1,9 @@
+-Version Django: 
+	python -m django --version
+-Arrancar el servidor: 
+	start http://127.0.0.1:8000/ && python manage.py runserver
+-Para ejecutar Requirements.txt
+	pip install -r requirements.txt
+-Para realizar actulziaciones en la base de Django
+	python manage.py makemigrations
+	python manage.py migrate

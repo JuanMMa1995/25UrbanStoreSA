@@ -1,0 +1,147 @@
+{% extends "Herencia.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}25 Urban Store - Quiénes Somos{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/Footer/QuienesSomos.css' %}" />
+{% endblock %}
+
+{% block content %}
+<section class="about-us-hero">
+    <div class="hero-overlay">
+        <h1>MÁS QUE ROPA, UNA ACTITUD</h1>
+        <p>Desde 2015 vistiendo la cultura urbana</p>
+    </div>
+</section>
+
+<section class="our-story">
+    <div class="container">
+        <h2>Nuestra Historia</h2>
+        <div class="story-content">
+            <div class="story-text">
+                <p>25 Urban Store nació en las calles de Santiago en 2015, cuando un grupo de amigos apasionados por la moda urbana y el streetwear decidió crear un espacio donde la ropa fuera más que tela: una expresión de identidad.</p>
+                <p>Lo que comenzó como un pequeño local en el barrio Yungay hoy se ha transformado en una de las tiendas de moda urbana más reconocidas del país, manteniendo siempre nuestro espíritu auténtico y cercano.</p>
+                <p>El nombre "25" representa el día en que abrimos nuestras puertas por primera vez, y desde entonces, cada 25 del mes celebramos con nuestros clientes con ofertas exclusivas.</p>
+            </div>
+            <div class="story-image">
+                <img src="{% static 'img/about-us/origen.jpg' %}" alt="Primera tienda 25 Urban Store">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="our-philosophy">
+    <div class="container">
+        <h2>Nuestra Filosofía</h2>
+        <div class="philosophy-grid">
+            <div class="philosophy-item">
+                <div class="icon-box">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <h3>Calidad sobre cantidad</h3>
+                <p>Seleccionamos cuidadosamente cada prenda, priorizando materiales duraderos y confortables que resistan el ritmo urbano.</p>
+            </div>
+            <div class="philosophy-item">
+                <div class="icon-box">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <h3>Comercio con conciencia</h3>
+                <p>Implementamos prácticas sostenibles en nuestra cadena de producción y apoyamos a diseñadores locales emergentes.</p>
+            </div>
+            <div class="philosophy-item">
+                <div class="icon-box">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Comunidad primero</h3>
+                <p>Organizamos eventos culturales, colaboraciones con artistas urbanos y talleres para fortalecer nuestra escena local.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="our-products">
+    <div class="container">
+        <h2>Lo Que Nos Define</h2>
+        <div class="product-categories">
+            <div class="category-card">
+                <img src="{% static 'img/about-us/poleras.jpg' %}" alt="Poleras urbanas">
+                <div class="category-info">
+                    <h3>Poleras con actitud</h3>
+                    <p>Diseños exclusivos que hablan por ti, desde gráficos minimalistas hasta estampados audaces que capturan la esencia street.</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="{% static 'img/about-us/polerones.jpg' %}" alt="Polerones urbanos">
+                <div class="category-info">
+                    <h3>Polerones que abrazan</h3>
+                    <p>Comodidad sin sacrificar estilo, con cortes modernos y tejidos premium para esos días de vibra relajada pero con personalidad.</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="{% static 'img/about-us/jeans.jpg' %}" alt="Jeans urbanos">
+                <div class="category-info">
+                    <h3>Jeans que moldean</h3>
+                    <p>Desde los clásicos slim fit hasta los oversize de última tendencia, pensados para moverse en la ciudad con total libertad.</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="{% static 'img/about-us/joggers.jpg' %}" alt="Joggers urbanos">
+                <div class="category-info">
+                    <h3>Joggers versátiles</h3>
+                    <p>El equilibrio perfecto entre deportivo y casual, ideales para transitar del día a la noche sin perder un ápice de estilo.</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="{% static 'img/about-us/accesorios.jpg' %}" alt="Accesorios urbanos">
+                <div class="category-info">
+                    <h3>Accesorios con propósito</h3>
+                    <p>Gorros, cinturones y mochilas diseñados para complementar tu outfit y hacer declaraciones sutiles pero poderosas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="our-team">
+    <div class="container">
+        <h2>El Equipo Detrás de las Prendas</h2>
+        <div class="team-members">
+            <div class="member-card">
+                <img src="{% static 'img/about-us/team1.jpg' %}" alt="Fundador 25 Urban Store">
+                <h3>Daniel "Street" Pérez</h3>
+                <p>Fundador & Director Creativo</p>
+                <p>"Para mí la moda urbana es el lenguaje de las calles, y en 25 queremos darle voz a esa expresión."</p>
+            </div>
+            <div class="member-card">
+                <img src="{% static 'img/about-us/team2.jpg' %}" alt="Diseñadora 25 Urban Store">
+                <h3>Camila "CamiGraph" López</h3>
+                <p>Diseñadora Principal</p>
+                <p>"Cada estampado cuenta una historia, cada costura tiene un propósito. Eso es diseño con significado."</p>
+            </div>
+            <div class="member-card">
+                <img src="{% static 'img/about-us/team3.jpg' %}" alt="Community Manager 25 Urban Store">
+                <h3>Javier "UrbanConect" Martínez</h3>
+                <p>Community Manager</p>
+                <p>"Nuestra comunidad no son clientes, son familia. Su feedback es lo que nos hace mejorar cada día."</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="our-future">
+    <div class="container">
+        <div class="future-content">
+            <h2>Hacia Dónde Vamos</h2>
+            <p>En 25 Urban Store no nos conformamos. Estamos trabajando en nuestra primera colección 100% sustentable, expandiendo nuestra comunidad a través de talleres de diseño urbano, y desarrollando una app que revolucionará tu experiencia de compra.</p>
+            <p>Pero lo más importante: seguiremos siendo fieles a nuestras raíces, porque sabemos que la autenticidad no pasa de moda.</p>
+            <a href="/contacto" class="cta-button">Únete a nuestro viaje</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/Footer/QuienesSomos.js' %}"></script>
+{% endblock %}

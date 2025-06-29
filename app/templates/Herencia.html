@@ -1,0 +1,165 @@
+<!-- Herencia.html -->
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>25 Urban Store</title>
+    <link rel="website icon" type="png" href="{% static 'img/Header/25.png' %}" />
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style/Herencia.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"
+    />
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"
+    ></script>
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    {% block header %}
+    <header class="header01">
+        <div class="h1d1">
+            <img src="{% static 'img/Header/Logo.png' %}" alt="logo" class="logo" href="index.html" />
+        </div>
+
+       <div class="Bienvenido">
+        <img src="{% static 'img/Header/Rojo.png' %}" alt="">
+       </div>
+
+        <div class="h1d3">
+            <nav id="footer-nav-extras" class="footer-nav">
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <span class="footer-item">Bienvenido, {{ user.username }}</span>
+                        </li>
+                        <li>
+                            <a class="footer-item" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+                        </li>
+                        
+                        <!-- Mostrar solo para LiderUrbanStore -->
+                        {% if user.groups.all.0.name == 'LiderUrbanStore' %}
+                        <li>
+                            <a class="footer-item" href="{% url 'Administracion' %}">Administración de Productos</a>
+                        </li>
+                        <li>
+                            <a class="footer-item" href="{% url 'Admin_User' %}">Administración de Usuarios</a>
+                        </li>
+                        {% endif %}
+                        
+                        <!-- Mostrar solo para VendedorUrbanStore -->
+                        {% if user.groups.all.0.name == 'VendedorUrbanStore' %}
+                        <li>
+                            <a class="footer-item" href="{% url 'agregar_producto' %}">Agregar Productos</a>
+                        </li>
+                        {% endif %}
+                        
+                        <!-- Mostrar solo para LiderDeMarca -->
+                        {% if user.groups.all.0.name == 'LiderDeMarca' %}
+                        <li>
+                            <a class="footer-item" href="{% url 'modificar' %}">Modificar Productos</a>
+                        </li>
+                        <li>
+                            <a class="footer-item" href="{% url 'eliminar' %}">Eliminar Productos</a>
+                        </li>
+                        {% endif %}
+                    {% else %}
+                        <!-- Opciones para no autenticados -->
+                        <li>
+                            <a class="footer-item" href="{% url 'IniciarSesion' %}">Iniciar Sesión</a>
+                        </li>
+                        <li>
+                            <a class="footer-item" href="{% url 'Registrarse' %}">Registrarme</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <header class="header02">
+    <!-- Menú hamburguesa (si lo mantienes) -->
+    <div id="menu" class="hamburgesa"></div>
+
+    <!-- Menú principal (centrado) -->
+    <div id="menu" class="items">
+        <nav class="nav">
+            <ul class="menu">
+                <li class="menu-item"><a href="{% url 'index' %}">Inicio</a></li>
+                <li class="menu-item"><a href="{% url 'Torso' %}">Torso</a></li>
+                <li class="menu-item"><a href="{% url 'Pantalones' %}">Pantalones</a></li>
+                <li class="menu-item"><a href="{% url 'Calzado' %}">Calzado</a></li>
+                <li class="menu-item"><a href="{% url 'Accesorios' %}">Accesorios</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- CARRITO (a la derecha) -->
+    <div class="carrito-container">
+        <a href="{% url 'carrito' %}" class="enlace-carrito">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-counter {% if not request.session.cart %}d-none{% endif %}">
+                {% with cart_items=request.session.cart.items|length %}
+                    {{ cart_items|default:0 }}
+                {% endwith %}
+            </span>
+        </a>
+    </div>
+</header>
+    {% endblock %}
+
+    {% block content %}
+    <!-- El contenido específico de cada página irá aquí -->
+    {% endblock %}
+
+    {% block footer %}
+    <footer id="footer-principal">
+        <div class="marca" id="footer-marca">
+            <img src="{% static 'img/Header/25.png' %}" alt="Logo MyShop" id="footer-logo">
+        </div>
+        <div class="footer-info" id="footer-info-general">
+            <nav id="footer-nav-empresa" class="footer-nav">
+                <ul>
+                    <li class="footer-item"><a class="footer-item" href="{% url 'QuienesSomos' %}">Quienes Somos</a></li>
+                    <li class="footer-item"><a class="footer-item" href="{% url 'SeSocio' %}">Sé socio</a></li>
+                    <li class="footer-item"><a class="footer-item" href="{% url 'TrabajaConNosotros' %}">Trabaja con nosotros</a></li>
+                    <li class="footer-item"><a class="footer-item" href="{% url 'TerminosCondiciones' %}">Terminos y condiciones</a></li>
+                </ul>
+            </nav>
+            <p id="footer-atencion">
+                25 UrbanStore es marca registrada. Atención Online las 24 hrs. de Lunes a Domingo. <br>
+                Atención en tienda y telefónica de Lunes a Jueves de 9 a 19 hrs, Viernes de 9 a 18 hrs.
+            </p>
+            <p id="footer-contacto">
+                Dirección: Maipú 1234, Maipú - Stgo<br>
+                ¿Necesita ayuda? Llamar: 224373345 o WhatsApp: +56912345678
+            </p>
+        </div>
+        <div class="footer-extras" id="footer-extras">
+            <nav id="footer-nav-extras" class="footer-nav">
+                <ul>
+                    <li class="footer-item"><a class="footer-item" href="{% url 'Contacto' %}">Contactanos</a></li>
+                    <li class="footer-item">Seguimiento de Pedido</li>
+                    <li class="footer-item">Consulta tu Boleta</li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+    {% endblock %}
+
+    {% block extra_js %}
+    <script src="{% static 'js/Herencia.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,81 @@
+{% extends "Herencia.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}25 Urban Store - Envío{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/Ventas/Envio.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Datos de Envío</h2>
+    <form method="post" id="envio-form">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form.nombre.label_tag }}
+                {{ form.nombre }}
+            </div>
+            <div class="col-md-6">
+                {{ form.direccion.label_tag }}
+                {{ form.direccion }}
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                {{ form.ciudad.label_tag }}
+                {{ form.ciudad }}
+            </div>
+            <div class="col-md-6">
+                {{ form.region.label_tag }}
+                {{ form.region }}
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                {{ form.codigo_postal.label_tag }}
+                {{ form.codigo_postal }}
+            </div>
+            <div class="col-md-6">
+                {{ form.telefono.label_tag }}
+                {{ form.telefono }}
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+        </div>
+        
+        <!-- Resumen de compra -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h4>Resumen de Compra</h4>
+                <table class="table">
+                    <tr>
+                        <td>Subtotal:</td>
+                        <td>${{ total_carrito|intcomma }}</td>
+                    </tr>
+                    <tr>
+                        <td>Costo de envío:</td>
+                        <td id="costo-envio">$0</td>
+                    </tr>
+                    <tr class="table-active">
+                        <td><strong>Total:</strong></td>
+                        <td id="total-pagar"><strong>${{ total_carrito|intcomma }}</strong></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary mt-3">Continuar al Pago</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/Ventas/Envio.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,23 @@
+    .error-container {
+        max-width: 600px;
+        margin: 3rem auto;
+        padding: 2rem;
+        text-align: center;
+        border: 1px solid #f5c6cb;
+        border-radius: 8px;
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+    
+    .error-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #dc3545;
+    }
+    
+    .error-buttons {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }

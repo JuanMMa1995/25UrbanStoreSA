@@ -1,0 +1,80 @@
+Antes de solicitar alggo estoy creando una pagina web con:
+HTML
+CSS
+Djangoo
+
+Te mostrare la estructura de trabajo luego confirmame si la procesate para avanzar con  mi solicitud
+/USTORE
+	/app
+		/static
+			/img
+				/Contactos
+					/Tienda_Fondo.jpg
+				/Header
+					/25.png
+					/Amarillo.png
+					/Azul.png
+					/ladrillo.png
+					/Logo.png
+					/Rojo.png
+				/index
+					/Accesorios.jpg
+					/black-friday-recurso-escaparate-728.jpg
+					/images.jpg
+					/Pantalon.png
+					/Polera.png
+					/Portada-Fashion-Sale.jpg
+					/Zapatilla.png
+				/Ropa
+					/Accesorios
+						/Apple_Watch_SE2022_40mm.jpg
+						/Huawei_Watch_GT5_46mm_Brown.png
+						/Jockey47Mvp_Dp_Mlb_NY_Yankees.jpg
+						/Samsung_Galaxy_Watch6_Classic_43mm_black.png
+						/Under_Armour_Blanco.jpg
+					/Calzado
+						/Adidas_Originals.jpg
+						/Converse_All_Star_High_Street_Cuero.jpg
+						/Jordan_Retro_01.jpg
+						/Puma_X-Ray_2.jpg
+					/Pantalones
+						/Jeans_Azul_01.jpg
+						/Jeans_Verde_01.jpg
+						/Pantalones_Cafe_01.jpg
+						/Pantalones_Negro_01.jpg
+					/Polera
+						/Polera_Blanca_01.jpeg
+						/Polera_Blanca_DC.jpg
+						/Polera_Cafe_01.jpeg
+						/Polera_Negra_01.jpeg
+						/Polera_Negra_DC.jpg
+			/js
+				/formulario.js
+			/style
+				/Accesorios.css
+				/Calzado.css
+				/Contacto.css
+				/index.css
+				/Pantalones.css
+				/Torso.css
+		/templates
+			/Accesorios.html
+			/Calzado.html
+			/Contacto.html
+			/index.html
+			/Pantalones.html
+			/Torso.html
+		/__init__.py
+		/admin.py
+		/apps.py
+		/models.py
+		/test.py
+		/urls.py
+		/views.py
+	/USTORE
+		/__init__.py
+		/asgi.py
+		/settings.py
+		/urls.py
+		/wsgi.py
+		

@@ -1,0 +1,171 @@
+/*...::: Encabezado :::...*/
+/* AGREGA AL INICIO DE Herencia.css */
+body, html {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+* {
+  box-sizing: border-box !important;
+}
+/*------------------------*/
+/*...::: HEADER 01 :::...*/
+.header01 {
+    width: 100%;
+    height: 150px;
+    background-image: url(../img/Header/ladrillo.png);
+    background-repeat: repeat-x;
+    background-position: center top;
+    background-color: black;
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    padding: 0 15px; /* Agrega padding a los lados */
+}
+.logo{
+    width: 150px;
+    order: 3; /* Mueve el logo al final (derecha) */
+}
+
+.h1d1{
+    order: 1; /* Mueve h1d1 al inicio (izquierda) */
+}
+
+.Bienvenido {
+    width: auto;
+    height: 100px;
+    margin: 0 auto; /* Centra el elemento */
+    order: 2; /* Lo coloca en el medio */
+    display: flex;
+    align-items: center;
+}
+
+.visually-hidden{
+    color: black;
+}
+.h1d3{
+    order: 1; /* Lo coloca al inicio (izquierda) */
+    margin: 0; /* Elimina márgenes anteriores */
+    display: flex;
+    justify-content: flex-start; /* Alinea contenido a la izquierda */
+}
+.headerLetras{
+    color: white;
+    font-family: 'Permanent Marker', cursive;  /* Aplicar fuente */
+}
+
+/*...::: HEADER 02 :::...*/
+.header02 {
+    background-color: #eeecec;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuye el espacio entre elementos */
+    padding: 0 20px; /* Padding lateral para que no queden pegados a los bordes */
+}
+.nav {
+    display: flex;
+    justify-content: space-around; /* Alinea los elementos de forma equidistante */
+    align-items: center; /* Alinea verticalmente al centro */
+    height: 100%;
+}
+.menu {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Esto coloca los elementos en línea */
+}
+.menu-item {
+    margin: 0 35px; /* Espaciado horizontal entre los elementos */
+}
+.menu-item a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: black; /* Cambia el color de los enlaces */
+}
+.buscardor{
+    text-align: left;
+    margin-right: 5px; 
+}
+
+/*...::: Footer :::...*/
+/*------------------------*/
+/* Importar fuente Permanent Marker desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+/* Estilo general del footer */
+#footer-principal {
+  height: 300px;
+  background-image: url(../img/Header/ladrillo.png);
+  background-repeat: repeat-x;
+  background-position: center top;
+  background-color: black;
+  display: flex;
+  padding: 20px 40px;
+  gap: 40px;
+  color: white;
+  font-family: 'Permanent Marker', cursive;  /* Aplicar fuente */
+  
+  /* Texto en negrita y sombra para todo el contenido */
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Contenedor del logo */
+#footer-marca {
+  flex: 1 1 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo 25.png más grande */
+#footer-logo {
+  max-height: 300px; /* aumentado de 80px a 120px */
+  width: auto;
+}
+
+/* Información general dentro del footer */
+.footer-info {
+  flex: 2 1 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Sección de extras */
+.footer-extras {
+  flex: 1 1 200px;
+}
+
+/* Estilo de las listas de navegación */
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+/* Ítems de lista con negrita y sombra (heredado), y efecto hover */
+.footer-nav ul li {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.footer-nav ul li:hover {
+  text-decoration: underline;
+}
+
+/* Párrafos de atención y contacto */
+#footer-atencion,
+#footer-contacto {
+  font-size: 0.85rem;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.footer-item{
+  color: white;
+  text-decoration: none;
+}

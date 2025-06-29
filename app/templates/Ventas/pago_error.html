@@ -1,0 +1,25 @@
+{% extends "Herencia.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}25 Urban Store - Error en Pago{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/Ventas/pago_error.css' %}" />
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+<div class="container">
+    <div class="error-container">
+        <div class="error-icon">❌</div>
+        <h2>Error en el Proceso de Pago</h2>
+        <p>{{ error }}</p>
+        <div class="error-buttons">
+            <a href="{% url 'carrito' %}" class="btn btn-outline-danger">Volver al Carrito</a>
+            <a href="{% url 'index' %}" class="btn btn-outline-secondary">Ir al Inicio</a>
+        </div>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}

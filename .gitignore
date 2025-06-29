@@ -1,0 +1,28 @@
+# Entornos virtuales
+venv/
+env/
+.venv/
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Base de datos (SQLite)
+*.sqlite3
+*.db
+
+# Archivos de entorno
+.env
+.env.local
+
+# Django secret key
+secrets.py
+
+# Archivos de IDE
+.vscode/
+.idea/
+
+# Archivos del sistema
+.DS_Store
+thumbs.db

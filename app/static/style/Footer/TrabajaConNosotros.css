@@ -1,0 +1,51 @@
+
+/* TrabajaConNosotros.css */
+.work-with-us-container {
+    background-color: #f8f9fa;
+    padding: 3rem 0;
+    min-height: 80vh;
+}
+
+.work-with-us-form {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.work-with-us-title {
+    color: #343a40;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.work-with-us-btn {
+    background-color: #343a40;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.work-with-us-btn:hover {
+    background-color: #212529;
+    transform: translateY(-2px);
+}
+
+.file-input-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.file-input-info {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+.required-field::after {
+    content: " *";
+    color: #dc3545;
+}

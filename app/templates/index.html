@@ -1,0 +1,133 @@
+{% extends "Herencia.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}25 Urban Store - Carrito{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/index.css' %}" />
+{% endblock %}
+
+{% block content %}
+<!-- Carousel Container -->
+<br>
+<style>
+    .carousel-inner{
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+</style>
+
+<div>
+    <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img
+                src="{% static 'img/index/carousel_01.png' %}"
+                class="d-block w-100"
+                alt="..."
+            />
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'img/index/carousel_02.png' %}" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'img/index/carousel_03.png' %}" class="d-block w-100" alt="..." />
+        </div>
+    </div>
+    <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleControlsNoTouching"
+        data-bs-slide="prev"
+    >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleControlsNoTouching"
+        data-bs-slide="next"
+    >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+</div>
+
+<section class="promosiones">
+    <div class="container mt-4" id="mejoresPromociones">
+        <h3 class="text-center mb-3">Mejores Promociones</h3>
+        <div class="row g-3">
+            <!-- Fila 1 -->
+            <div class="col-md-6 col-lg-3 mb-2">
+                {% if tronco_mas_caro %}
+                <div class="card shadow-sm promo-card">
+                    {% if tronco_mas_caro.imagen %}
+                    <img src="{{ tronco_mas_caro.imagen.url }}" class="card-img-top promo-img" alt="{{ tronco_mas_caro.modelo }}">
+                    {% endif %}
+                    <div class="card-body p-2">
+                        <h6 class="text-muted mb-0 promo-brand">{{ tronco_mas_caro.marca | capfirst }}</h6>
+                        <h6 class="card-title promo-title">{{ tronco_mas_caro.modelo | title }}</h6>
+                        <p class="text-success fw-bold mb-0 promo-price">${{ tronco_mas_caro.precio | intcomma }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-2">
+                {% if piernas_mas_caro %}
+                <div class="card shadow-sm promo-card">
+                    {% if piernas_mas_caro.imagen %}
+                    <img src="{{ piernas_mas_caro.imagen.url }}" class="card-img-top promo-img" alt="{{ piernas_mas_caro.modelo }}">
+                    {% endif %}
+                    <div class="card-body p-2">
+                        <h6 class="text-muted mb-0 promo-brand">{{ piernas_mas_caro.marca | capfirst }}</h6>
+                        <h6 class="card-title promo-title">{{ piernas_mas_caro.modelo | title }}</h6>
+                        <p class="text-success fw-bold mb-0 promo-price">${{ piernas_mas_caro.precio | intcomma }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-2">
+                {% if zapatos_mas_caro %}
+                <div class="card shadow-sm promo-card">
+                    {% if zapatos_mas_caro.imagen %}
+                    <img src="{{ zapatos_mas_caro.imagen.url }}" class="card-img-top promo-img" alt="{{ zapatos_mas_caro.modelo }}">
+                    {% endif %}
+                    <div class="card-body p-2">
+                        <h6 class="text-muted mb-0 promo-brand">{{ zapatos_mas_caro.marca | capfirst }}</h6>
+                        <h6 class="card-title promo-title">{{ zapatos_mas_caro.modelo | title }}</h6>
+                        <p class="text-success fw-bold mb-0 promo-price">${{ zapatos_mas_caro.precio | intcomma }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-2">
+                {% if complemento_mas_caro %}
+                <div class="card shadow-sm promo-card">
+                    {% if complemento_mas_caro.imagen %}
+                    <img src="{{ complemento_mas_caro.imagen.url }}" class="card-img-top promo-img" alt="{{ complemento_mas_caro.modelo }}">
+                    {% endif %}
+                    <div class="card-body p-2">
+                        <h6 class="text-muted mb-0 promo-brand">{{ complemento_mas_caro.marca | capfirst }}</h6>
+                        <h6 class="card-title promo-title">{{ complemento_mas_caro.modelo | title }}</h6>
+                        <p class="text-success fw-bold mb-0 promo-price">${{ complemento_mas_caro.precio | intcomma }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<br>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}

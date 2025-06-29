@@ -1,0 +1,58 @@
+/* Estilos para el carrito de compras */
+.cart-product-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.quantity-selector {
+    max-width: 120px;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+#checkoutBtn {
+    min-width: 200px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.alert-info a {
+    color: #0c5460;
+    text-decoration: underline;
+}
+
+.alert-info a:hover {
+    text-decoration: none;
+}
+
+/* Efecto hover para las filas de la tabla */
+.table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Estilo para el botón de eliminar */
+.remove-item {
+    transition: all 0.3s ease;
+}
+
+.remove-item:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para los botones de cantidad */
+.quantity-selector button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.quantity {
+    min-width: 30px;
+    text-align: center;
+}

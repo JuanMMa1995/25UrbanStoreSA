@@ -1,0 +1,127 @@
+{% extends "Herencia.html" %}
+{% load static %}
+
+{% block title %}25 Urban Store - Agregar Marca{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'style/producto/agregar_marcas.css' %}">
+<style>
+    /* Estilos inline para el fondo como respaldo */
+    body {
+        background-image: url("{% static 'img/Header/fondo.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        position: relative;
+    }
+    
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: -1;
+    }
+    
+    .container {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        border-radius: 15px;
+        padding: 25px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card bg-transparent border-light">
+                <div class="card-header bg-primary bg-opacity-75">
+                    <h2 class="text-center">Agregar Nueva Marca</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{% url 'agrega_marca' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre de la Marca</label>
+                            {{ form.nombre }}
+                            {% if form.nombre.errors %}
+                                <div class="alert alert-danger mt-2">
+                                    {{ form.nombre.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Guardar Marca</button>
+                            <a href="{% url 'Administracion' %}" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tabla de marcas por categoría -->
+            <div class="table-responsive mt-4">
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr class="bg-primary bg-opacity-75">
+                            <th>Torso</th>
+                            <th>Pantalones</th>
+                            <th>Calzado</th>
+                            <th>Accesorios</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- Marcas para Torso -->
+                            <td class="brand-cell">
+                                {% for marca in marcas_torso %}
+                                    <span class="brand-badge d-block mb-2">{{ marca.nombre }}</span>
+                                {% empty %}
+                                    <span class="text-muted">No hay marcas</span>
+                                {% endfor %}
+                            </td>
+                            <!-- Marcas para Pantalones -->
+                            <td class="brand-cell">
+                                {% for marca in marcas_pantalones %}
+                                    <span class="brand-badge d-block mb-2">{{ marca.nombre }}</span>
+                                {% empty %}
+                                    <span class="text-muted">No hay marcas</span>
+                                {% endfor %}
+                            </td>
+                            <!-- Marcas para Calzado -->
+                            <td class="brand-cell">
+                                {% for marca in marcas_calzado %}
+                                    <span class="brand-badge d-block mb-2">{{ marca.nombre }}</span>
+                                {% empty %}
+                                    <span class="text-muted">No hay marcas</span>
+                                {% endfor %}
+                            </td>
+                            <!-- Marcas para Accesorios -->
+                            <td class="brand-cell">
+                                {% for marca in marcas_accesorios %}
+                                    <span class="brand-badge d-block mb-2">{{ marca.nombre }}</span>
+                                {% empty %}
+                                    <span class="text-muted">No hay marcas</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/agrega_marca.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,39 @@
+.promosiones{
+    /* static/style/index.css */
+#mejoresPromociones .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#mejoresPromociones .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+#mejoresPromociones .card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+
+#mejoresPromociones .card-body {
+    padding: 1.5rem;
+}
+
+#mejoresPromociones h2 {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+#mejoresPromociones h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #000;
+    margin: 10px auto;
+}
+}

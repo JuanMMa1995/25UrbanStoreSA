@@ -1,0 +1,76 @@
+{% extends "Herencia.html" %}
+{% load static %}
+
+{% block title %}25 Urban Store - Administración{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/producto/Administracion.css' %}" />
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+{% if user.groups.all.0.name == 'LiderUrbanStore' %}
+<div class="row justify-content-center">
+    <!-- Card Agregar Producto -->
+    <div class="col-auto mb-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/producto/agregar-producto.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="{% url 'agregar_producto' %}" class="btn btn-success">Agregar Producto</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Card Eliminar Producto -->
+    <div class="col-auto mb-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/producto/eliminar-producto.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="{% url 'eliminar' %}" class="btn btn-danger">Eliminar Producto</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Card Modificar Producto -->
+    <div class="col-auto mb-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/producto/modificar-producto.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="{% url 'modificar' %}" class="btn btn-warning">Modificar Producto</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Card Agregar Marca -->
+    <div class="col-auto mb-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/producto/listar-producto.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="{% url 'agrega_marca' %}" class="btn btn-primary">Agregar Marca</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if user.groups.all.0.name == 'VendedorUrbanStore' %}
+<!-- Mostrar solo opción de agregar productos -->
+<div class="row justify-content-center">
+    <div class="col-auto mb-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/producto/agregar-producto.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="{% url 'agregar_producto' %}" class="btn btn-success">Agregar Producto</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+</div>
+<br><br><br>
+{% endblock %}
+
+{# Añade JavaScript específico si es necesario #}
+{% block extra_js %}
+<script src="{% static 'js/nueva-pagina.js' %}"></script>
+{% endblock %}  

@@ -1,0 +1,208 @@
+{% extends "Herencia.html" %}
+{% load static %}
+
+{% block title %}25 Urban Store - Modificar Productos{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'style/producto/modificar.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="modificar-container">
+    <h2 class="text-center mb-4">Modificar Productos</h2>
+    
+    <!-- Selector de tipo de producto -->
+    <div class="product-type-selector">
+        <form id="productTypeForm" method="POST" action="{% url 'modificar' %}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-8">
+                    <label for="tipo_producto" class="form-label">Seleccione el tipo de producto:</label>
+                    <select class="form-select" id="tipo_producto" name="tipo_producto" required>
+                        <option value="" selected disabled>-- Seleccione --</option>
+                        <option value="Tronco">Torso</option>
+                        <option value="Piernas">Pantalones</option>
+                        <option value="Zapatos">Calzado</option>
+                        <option value="Complemento">Accesorios</option>
+                    </select>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100" name="listar">Listar Productos</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Lista de productos -->
+    {% if productos %}
+    <div class="product-list">
+        <h4 class="mb-3">Productos de {{ tipo_producto }}</h4>
+        
+        <form id="modifyForm" method="POST" action="{% url 'modificar' %}">
+            {% csrf_token %}
+            <input type="hidden" name="tipo_producto" value="{{ tipo_producto }}">
+            
+            <div class="row">
+                {% for producto in productos %}
+                <div class="col-md-6">
+                    <div class="product-card">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="producto_id" 
+                                   id="producto_{{ producto.id }}" value="{{ producto.id }}" required>
+                            <label class="form-check-label" for="producto_{{ producto.id }}">
+                                <strong>{{ producto.modelo }}</strong>
+                            </label>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-3">
+                                {% if producto.imagen %}
+                                <img src="{{ producto.imagen.url }}" alt="{{ producto.modelo }}" class="img-fluid">
+                                {% else %}
+                                <img src="{% static 'img/placeholder.jpg' %}" alt="Sin imagen" class="img-fluid">
+                                {% endif %}
+                            </div>
+                            <div class="col-md-9">
+                                <p><strong>Modelo:</strong> {{ producto.modelo|default:"-" }}</p>
+                                <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+                                <p><strong>Marca:</strong> {{ producto.marca }}</p>
+                                <p><strong>Género:</strong> {{ producto.get_genero_display }}</p>
+                                <p><strong>Color:</strong> {{ producto.get_color_display }}</p>
+                                {% if producto.subcategoria %}
+                                <p><strong>Subcategoría:</strong> {{ producto.get_subcategoria_display }}</p>
+                                {% endif %}
+                                {% if producto.tipo %}
+                                <p><strong>Tipo:</strong> {{ producto.get_tipo_display }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-modificar" id="btnModificar">Modificar Producto Seleccionado</button>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+    
+    <!-- Modal de confirmación -->
+    <div class="confirmation-modal" id="confirmationModal">
+        <div class="modal-content">
+            <h4>Confirmar Modificación</h4>
+            <p>¿Estás seguro que deseas modificar este producto?</p>
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-secondary" id="cancelModal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="confirmModify">Confirmar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Formulario de modificación (inicialmente oculto) -->
+    <div class="modification-form mt-4" id="modificationForm" style="display: none;">
+        <h4>Editar Producto</h4>
+        <form id="editProductForm" method="POST" action="{% url 'modificar' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="actualizar" value="true">
+            <input type="hidden" name="tipo_producto" id="editTipoProducto">
+            <input type="hidden" name="producto_id" id="editProductoId">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="editModelo">Modelo</label>
+                        <input type="text" class="form-control" id="editModelo" name="modelo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editPrecio">Precio</label>
+                        <input type="number" class="form-control" id="editPrecio" name="precio" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editCantidad">Cantidad en stock</label>
+                        <input type="number" class="form-control" id="editCantidad" name="cantidad" min="0" value="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editMarca">Marca</label>
+                        <select class="form-select" id="editMarca" name="marca" required>
+                            {% for marca in marcas %}
+                            <option value="{{ marca.id }}">{{ marca.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editGenero">Género</label>
+                        <select class="form-select" id="editGenero" name="genero" required>
+                            {% for value, display in GENERO_CHOICES %}
+                            <option value="{{ value }}">{{ display }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editColor">Color</label>
+                        <select class="form-select" id="editColor" name="color" required>
+                            {% for value, display in COLOR_CHOICES %}
+                            <option value="{{ value }}">{{ display }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="editDescripcion">Descripción</label>
+                        <textarea class="form-control" id="editDescripcion" name="descripcion" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="editNuevo" name="nuevo">
+                        <label class="form-check-label" for="editNuevo">¿Es nuevo?</label>
+                    </div>
+                    
+                    <div class="form-group" id="subcategoriaGroup" style="display: none;">
+                        <label for="editSubcategoria">Subcategoría</label>
+                        <select class="form-select" id="editSubcategoria" name="subcategoria">
+                            {% for value, display in SUBCATEGORIA_TRONCO %}
+                                <option value="{{ value }}">{{ display }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="tipoAccesorioGroup" style="display: none;">
+                        <label for="editTipoAccesorio">Tipo de Accesorio</label>
+                        <select class="form-select" id="editTipoAccesorio" name="tipo_accesorio">
+                            <option value="REL">Reloj</option>
+                            <option value="BUF">Bufanda</option>
+                            <option value="CIN">Cinturón</option>
+                            <option value="COL">Collar</option>
+                            <option value="GOR">Gorra</option>
+                            <option value="PUL">Pulseras</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editImagen">Imagen</label>
+                        <input type="file" class="form-control" id="editImagen" name="imagen">
+                        <small class="text-muted">Dejar en blanco para mantener la imagen actual</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                <button type="button" class="btn btn-secondary" id="cancelEdit">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/modificar.js' %}"></script>
+{% endblock %}

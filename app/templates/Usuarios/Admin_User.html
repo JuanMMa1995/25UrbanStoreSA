@@ -1,0 +1,81 @@
+{% extends "Herencia.html" %}
+{% load static %}
+
+{% block title %}25 Urban Store - Administración de Usuarios{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" href="{% static 'style/Usuarios/Admin_User.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Administración de Usuarios</h1>
+    
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre de usuario</th>
+                    <th>Email</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Staff</th>
+                    <th>Último login</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <form method="post" action="{% url 'Admin_User' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_id" value="{{ user.id }}">
+                        <td>{{ user.id }}</td>
+                        <td>
+                            <input type="text" class="form-control" name="username_{{ user.id }}" value="{{ user.username }}" required>
+                        </td>
+                        <td>
+                            <input type="email" class="form-control" name="email_{{ user.id }}" value="{{ user.email }}">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="first_name_{{ user.id }}" value="{{ user.first_name }}">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="last_name_{{ user.id }}" value="{{ user.last_name }}">
+                        </td>
+                        <td class="text-center">
+                            <div class="form-check form-switch d-flex justify-content-center">
+                                <input class="form-check-input" type="checkbox" name="is_staff_{{ user.id }}" {% if user.is_staff %}checked{% endif %}>
+                            </div>
+                        </td>
+                        <td>{{ user.last_login|date:"d/m/Y H:i" }}</td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <button type="submit" name="update_user" class="btn btn-sm btn-primary" title="Actualizar">
+                                    <i class="bi bi-save"></i>
+                                </button>
+                                <button type="submit" name="delete_user" class="btn btn-sm btn-danger" title="Eliminar" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </form>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" class="text-center">No hay usuarios registrados</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/Admin_User.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "Herencia.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}25 Urban Store - Redirigiendo a Transbank{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/Ventas/send_pay.css' %}" />
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+<div class="container">
+    <div class="redirect-container">
+        <div class="redirect-icon">↻</div>
+        <h2>Redirigiendo a Transbank</h2>
+        <p class="redirect-message">Estás siendo redirigido a la pasarela de pago de Transbank para completar tu compra.</p>
+        <p>Por favor, espera un momento...</p>
+        
+        <form action="{{ transbank.url }}" name="send_pay_form" method="POST">
+            <input type="hidden" name="token_ws" value="{{ transbank.token }}">
+            <button type="submit" class="btn btn-primary btn-manual">Si no redirige automáticamente, haz clic aquí</button>
+        </form>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/Ventas/send_pay.js' %}"></script>
+{% endblock %}

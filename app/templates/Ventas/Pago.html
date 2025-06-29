@@ -1,0 +1,59 @@
+{% extends "Herencia.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}25 Urban Store - Pago{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/Ventas/Pago.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Resumen de Compra</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Datos de Envío</h4>
+            <p><strong>Nombre:</strong> {{ envio.nombre }}</p>
+            <p><strong>Dirección:</strong> {{ envio.direccion }}</p>
+            <p><strong>Ciudad:</strong> {{ envio.ciudad }}</p>
+            <p><strong>Región:</strong> {{ envio.get_region_display }}</p>
+            <p><strong>Código Postal:</strong> {{ envio.codigo_postal }}</p>
+            <p><strong>Teléfono:</strong> {{ envio.telefono }}</p>
+            <p><strong>Email:</strong> {{ envio.email }}</p>
+        </div>
+        <div class="col-md-6">
+            <h4>Resumen de Pago</h4>
+            <table class="table">
+                <tr>
+                    <td>Subtotal:</td>
+                    <td>${{ envio.monto_carrito|intcomma }}</td>
+                </tr>
+                <tr>
+                    <td>Costo de envío:</td>
+                    <td>${{ envio.costo_envio|intcomma }}</td>
+                </tr>
+                <tr class="table-active">
+                    <td><strong>Total a pagar:</strong></td>
+                    <td><strong>${{ envio.total_pagar|intcomma }}</strong></td>
+                </tr>
+            </table>
+            
+            <div class="mt-4">
+                <h4>Método de Pago</h4>
+                <p>Serás redirigido a Transbank para completar el pago de forma segura.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success btn-lg w-100 mt-4">
+                        Pagar con Tarjeta ${{ envio.total_pagar|intcomma }}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/Ventas/Pago.js' %}"></script>
+{% endblock %}

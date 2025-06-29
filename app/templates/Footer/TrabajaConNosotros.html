@@ -1,0 +1,112 @@
+{% extends "Herencia.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}25 Urban Store - Trabaja con Nosotros{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/Footer/TrabajaConNosotros.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container work-with-us-container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="work-with-us-form">
+                <h2 class="work-with-us-title">Únete a Nuestro Equipo</h2>
+                
+                {% if messages %}
+                <div class="mb-4">
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <form id="workWithUsForm" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="id_nombre" class="form-label required-field">Nombre Completo</label>
+                        {{ form.nombre }}
+                        {% if form.nombre.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.nombre.errors.0 }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="id_email" class="form-label required-field">Correo Electrónico</label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.email.errors.0 }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="id_telefono" class="form-label required-field">Teléfono</label>
+                            {{ form.telefono }}
+                            {% if form.telefono.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.telefono.errors.0 }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_puesto" class="form-label required-field">Puesto de Interés</label>
+                        {{ form.puesto }}
+                        {% if form.puesto.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.puesto.errors.0 }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_mensaje" class="form-label required-field">Mensaje</label>
+                        {{ form.mensaje }}
+                        {% if form.mensaje.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.mensaje.errors.0 }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="file-input-label required-field">Curriculum Vitae</label>
+                        {{ form.cv }}
+                        <small class="file-input-info">Formatos aceptados: PDF, DOC, DOCX (Máximo 5MB)</small>
+                        <div class="mt-2">
+                            <span id="file-name" class="text-muted">Ningún archivo seleccionado</span>
+                        </div>
+                        {% if form.cv.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.cv.errors.0 }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn work-with-us-btn">
+                            <i class="fas fa-paper-plane me-2"></i> Enviar Solicitud
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/Footer/TrabajaConNosotros.js' %}"></script>
+{% endblock %}

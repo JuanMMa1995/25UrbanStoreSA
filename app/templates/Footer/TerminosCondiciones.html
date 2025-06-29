@@ -1,0 +1,105 @@
+{% extends "Herencia.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}25 Urban Store - Términos y Condiciones{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/Footer/TerminosCondiciones.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="terminos-container">
+    <div class="terminos-header">
+        <h1>TÉRMINOS Y CONDICIONES DE VENTA Y ENVÍO</h1>
+        <p class="fecha-actualizacion">Última actualización: Enero 2025</p>
+    </div>
+
+    <div class="terminos-content">
+        <section class="terminos-section">
+            <h2>1. CONDICIONES GENERALES</h2>
+            <p>Al realizar una compra en 25 Urban Store, usted acepta los siguientes términos y condiciones que regulan la relación comercial entre el cliente y nuestra empresa.</p>
+        </section>
+
+        <section class="terminos-section">
+            <h2>2. PROCESO DE COMPRA</h2>
+            <ul>
+                <li>Todos los precios están expresados en pesos chilenos e incluyen IVA.</li>
+                <li>Los productos quedan sujetos a disponibilidad de stock al momento de confirmar la compra.</li>
+                <li>Nos reservamos el derecho de rechazar pedidos por errores en precios o descripciones.</li>
+                <li>Recibirá un correo de confirmación con los detalles de su compra.</li>
+            </ul>
+        </section>
+
+        <section class="terminos-section">
+            <h2>3. MÉTODOS DE PAGO</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Pago en línea seguro</h3>
+                    <ul>
+                        <li>Tarjetas de crédito (Visa, Mastercard, American Express)</li>
+                        <li>Tarjetas de débito (Redcompra)</li>
+                        <li>Transferencia bancaria</li>
+                        <li>Webpay Plus</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3>Otras formas de pago</h3>
+                    <ul>
+                        <li>Pago contra entrega (solo Región Metropolitana)</li>
+                        <li>Mercado Pago</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="terminos-section">
+            <h2>4. POLÍTICA DE ENVÍOS</h2>
+            <div class="envios-info">
+                <div class="envio-item">
+                    <h3>Cobertura</h3>
+                    <p>Envíos a todo Chile continental (excepto zonas extremas). Para Isla de Pascua y Juan Fernández, consultar costos adicionales.</p>
+                </div>
+                <div class="envio-item">
+                    <h3>Plazos de entrega</h3>
+                    <p>Región Metropolitana: 1-2 días hábiles<br>
+                    Otras regiones: 3-5 días hábiles</p>
+                </div>
+                <div class="envio-item">
+                    <h3>Costos</h3>
+                    <p>Envío gratuito para compras superiores a $50.000 en RM.<br>
+                    Envío estándar: $4.990 (RM) / $6.990 (regiones).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="terminos-section">
+            <h2>5. CAMBIOS Y DEVOLUCIONES</h2>
+            <p>Dispones de 15 días desde la recepción para solicitar cambios o devoluciones. Los productos deben estar en perfecto estado, con etiquetas y en su empaque original. No aplica para productos personalizados o de higiene íntima.</p>
+        </section>
+
+        <section class="terminos-section">
+            <h2>6. GARANTÍAS</h2>
+            <p>Todos nuestros productos cuentan con garantía legal de 3 meses (Ley del Consumidor). Para hacerla efectiva debe presentar boleta o factura.</p>
+        </section>
+
+        <section class="terminos-section">
+            <h2>7. PROTECCIÓN DE DATOS</h2>
+            <p>Tus datos personales están protegidos según la Ley 19.628 sobre Protección de la Vida Privada. Solo los usaremos para procesar tu compra y enviarte información relevante sobre nuestros productos.</p>
+        </section>
+
+        <section class="terminos-section">
+            <h2>8. LEGISLACIÓN APLICABLE</h2>
+            <p>Estos términos se rigen por las leyes de la República de Chile. Cualquier controversia será resuelta en los tribunales competentes de Santiago.</p>
+        </section>
+
+        <div class="contacto-terminos">
+            <p>Para consultas sobre estos términos, contáctenos a <a href="mailto:terminos@25urbanstore.cl">terminos@25urbanstore.cl</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/Footer/TerminosCondiciones.js' %}"></script>
+{% endblock %}
